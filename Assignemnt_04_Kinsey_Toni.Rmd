@@ -1,0 +1,77 @@
+---
+  title: "ASSIGNMENT 4"
+author: "Firstname Lastname"
+date: '2010-02-14'
+output:
+  word_document: default
+html_document: default
+pdf_document: default
+bibliography: bibliography.bib
+---
+  
+  # Markdown Basics
+  
+  ## Favorite Foods
+  lasagna
+  
+  ## Images
+  ![This is my daughter!](C:\Users\headc\Desktop\DSC520\Week 6\Mary.png)
+  
+  ## Add a Quote
+  "It is never to late to be who you might have been." -- George Elliot
+  
+  ## Add an Equation
+  
+  xCoG=∑mi⋅xiM
+  
+## Add a Footnote
+
+This is a footnote: The equation above is to calculate the center of mass of a robots x axis.
+
+## Add Citations
+
+* R for Everyone
+Lander, J. P. (2017). R for everyone: Advanced analytics and graphics. Addison-Wesley. 
+* Discovering Statistics Using R
+SAGE Publications Ltd. (2013). Discovering statistics using R. 
+
+# Inline Code
+## Load the ggplot2 package
+library(ggplot2)
+theme_set(theme_minimal())
+library(dplyr) 
+library(purrr) 
+library(stringr)
+
+## Set the working directory to the root of your DSC 520 directory
+setwd("C:\\Users\\headc\\Documents\\GitHub\\dsc520")
+
+## Load the `data\nytimes\covid-19-data\us-states.cvs` to
+NY_df <- read.csv("data/r4ds/us-states.csv")
+
+NY_Final_df <- NY_df %>% filter(NY_df$state == 'New York')
+
+## Load the `data/r4ds/heights.csv` to
+heights_df <- read.csv("data/r4ds/heights.csv")
+
+## NY Times COVID-19 Data
+ggplot(NY_df, aes(x= cases, y= state)) + geom_point()
+
+## R4DS Height vs Earnings
+ggplot(heights_df, aes(x=height, y=earn)) + geom_point() + ggtitle('Height vs. Earnings') + labs(y="Earnings (Dollars)", x="Height (Inches)" ) 
+
+# Tables
+
+## Knitr Table with Kable
+
+knitr::kable(head(heights_df), "pipe")
+
+## Pandoc Table
+
+pandoc.table(heights_df, keep.line.breaks = TRUE)
+
+# References
+
+Lander, J. P. (2017). R for everyone: Advanced analytics and graphics. Addison-Wesley. 
+
+SAGE Publications Ltd. (2013). Discovering statistics using R. 
